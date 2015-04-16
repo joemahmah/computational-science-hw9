@@ -181,11 +181,11 @@ public class EventDataAnalysisAIVarStore {
         
     }
     
-    public double[] getRange_mlnub(){
-        double min = mlnub.get(0);
-        double max = mlnub.get(0);
+    public double[] getRange_hT(){
+        double min = hT.get(0);
+        double max = hT.get(0);
         
-        for(double value: mlnub){
+        for(double value: hT){
             min = Math.min(value, min);
             max = Math.max(value, max);
         }
@@ -195,11 +195,11 @@ public class EventDataAnalysisAIVarStore {
         
     }
     
-    public double[] getRange_mlnub(){
-        double min = mlnub.get(0);
-        double max = mlnub.get(0);
+    public double[] getRange_mET(){
+        double min = mET.get(0);
+        double max = mET.get(0);
         
-        for(double value: mlnub){
+        for(double value: mET){
             min = Math.min(value, min);
             max = Math.max(value, max);
         }
@@ -209,11 +209,25 @@ public class EventDataAnalysisAIVarStore {
         
     }
     
-    public double[] getRange_mlnub(){
-        double min = mlnub.get(0);
-        double max = mlnub.get(0);
+    public double[] getRange_qEta(){
+        double min = qEta.get(0);
+        double max = qEta.get(0);
         
-        for(double value: mlnub){
+        for(double value: qEta){
+            min = Math.min(value, min);
+            max = Math.max(value, max);
+        }
+        
+        double[] range = {min,max};
+        return range;
+        
+    }
+    
+    public double[] getRange_cosTheta(){
+        double min = cosTheta.get(0);
+        double max = cosTheta.get(0);
+        
+        for(double value: cosTheta){
             min = Math.min(value, min);
             max = Math.max(value, max);
         }
