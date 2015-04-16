@@ -237,8 +237,8 @@ public class EventDataAnalysisAIVarStore {
         
     }
     
-    public double][] getProbableRange_mlnub(){
-        
+    public double[] getProbableRange_mlnub(){
+        return Stats.getPercentRange(mlnub, 68, (int)Math.round(Stats.getAverage(mlnub)), (int)Math.ceil(Stats.getMaxValueInArray(mlnub)));
     }
     
 }
