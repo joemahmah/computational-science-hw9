@@ -241,4 +241,32 @@ public class EventDataAnalysisAIVarStore {
         return Stats.getPercentRange(mlnub, 68, (int)Math.round(Stats.getAverage(mlnub)), (int)Math.ceil(Stats.getMaxValueInArray(mlnub)));
     }
     
+    public double[] getProbableRange_transverseMass(){
+        return Stats.getPercentRange(transverseMass, 68, (int)Math.round(Stats.getAverage(transverseMass)), (int)Math.ceil(Stats.getMaxValueInArray(transverseMass)));
+    }
+    
+    public double[] getProbableRange_jetlET(){
+        return Stats.getPercentRange(jet1ET, 68, (int)Math.round(Stats.getAverage(jet1ET)), (int)Math.ceil(Stats.getMaxValueInArray(jet1ET)));
+    }
+    
+    public double[] getProbableRange_leptonpT(){
+        return Stats.getPercentRange(leptonpT, 68, (int)Math.round(Stats.getAverage(leptonpT)), (int)Math.ceil(Stats.getMaxValueInArray(leptonpT)));
+    }
+    
+    public double[] getProbableRange_hT(){
+        return Stats.getPercentRange(hT, 68, (int)Math.round(Stats.getAverage(hT)), (int)Math.ceil(Stats.getMaxValueInArray(hT)));
+    }
+    
+    public double[] getProbableRange_mET(){
+        return Stats.getPercentRange(mET, 68, (int)Math.round(Stats.getAverage(mET)), (int)Math.ceil(Stats.getMaxValueInArray(mET)));
+    }
+    
+    public double[] getProbableRange_qEta(){
+        return Stats.getPercentRange(qEta, 68, (int)Math.round(Stats.getAverage(qEta)), (int)Math.ceil(Stats.getMaxValueInArray(qEta)));
+    }
+    
+    public double[] getProbableRange_cosTheta(){
+        return Stats.getPercentRange(cosTheta, 68, (int)Math.round(Stats.getAverage(cosTheta)), (int)Math.ceil(Stats.getMaxValueInArray(cosTheta)));
+    }
+    
 }
