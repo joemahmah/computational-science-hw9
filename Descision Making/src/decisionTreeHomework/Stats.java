@@ -44,10 +44,9 @@ public class Stats {
         return average / values.size();
     }
 
-    public static Map<Integer, Integer> generateDistributionMap(ArrayList<Double> values) {
+    public static Map<Integer, Integer> generateDistributionMap(ArrayList<Integer> values) {
         Map<Integer, Integer> distribution = new HashMap<>();
-        for (Double d : values) {
-            Integer i = (int) (double) d;
+        for (Integer i : values) {
             if (distribution.containsKey(i)) {
                 distribution.put(i, distribution.get(i) + 1);
             } else {
@@ -70,7 +69,10 @@ public class Stats {
         return sortedMap;
     }
 
-    public static double getPercentageMatchingTargetValue(ArrayList<Double> values, Integer targetValue) {
+    public static double getPercentageMatchingTargetValue(ArrayList<Double> valuesDouble, Integer targetValue) {
+        
+        ArrayList<Integer> values = scaleUp100x(valuesDouble);
+        
         Map<Integer, Integer> map = generateDistributionMap(values);
 
         if (map.containsKey(targetValue)) {
@@ -88,10 +90,12 @@ public class Stats {
         return 0;
     }
 
-    public static double[] getPercentRange(ArrayList<Double> values, Integer percentage, Integer targetValue, Integer maxBound) {
+    public static double[] getPercentRange(ArrayList<Double> valuesDouble, Integer percentage, Integer targetValue, Integer maxBound) {
         double[] zrange = new double[2];
         double targetPercentage = percentage / 200.0;
 
+        ArrayList<Integer> values = scaleUp100x(valuesDouble);
+        
         Map<Integer, Integer> distribution = generateDistributionMap(values);
         distribution = sortMap(distribution, maxBound);
 
@@ -132,6 +136,15 @@ public class Stats {
         return zrange;
     }
 
+    private static ArrayList<Integer> scaleUp100x(ArrayList<Double> nums){
+        ArrayList<Integer> intNums = new ArrayList<>();
+        for(double d: nums){
+            d *= 100;
+            intNums.add((int)Math.round(d));
+        }
+        return intNums;
+    }
+    
     public static double calculateUncertainty(double lower, double upper, double size) {
         double avg = (lower + upper) / 2.0;
         return avg / size * 100;

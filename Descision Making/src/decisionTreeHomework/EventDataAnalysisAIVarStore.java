@@ -269,4 +269,8 @@ public class EventDataAnalysisAIVarStore {
         return Stats.getPercentRange(cosTheta, 68, (int)Math.round(Stats.getAverage(cosTheta)), (int)Math.ceil(Stats.getMaxValueInArray(cosTheta)));
     }
     
+    public double getOccurancePercentage_mlnub(double value){
+        return 0;
+    }
+    
 }
