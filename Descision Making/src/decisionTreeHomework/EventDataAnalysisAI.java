@@ -6,8 +6,6 @@
 package decisionTreeHomework;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Map;
 
 /**
  *
@@ -17,38 +15,6 @@ public class EventDataAnalysisAI implements Serializable {
 
     public void train(Data dataSet, String type) {
 
-    }
-
-    private class dataRegistry {
-
-        private Map<String, varRegistry> varRegistries;
-
-        private dataRegistry() {
-
-        }
-
-        private void addDataToRegistry(String registry, var v) {
-
-        }
-
-    }
-
-    private class varRegistry {
-
-    }
-
-    private class var {
-
-        private var(double mlnub, double transverseMass, double jet1ET, double leptonpT, double hT, double mET, double qEta, double cosTheta) {
-            this.mlnub = mlnub;
-            this.transverseMass = transverseMass;
-            this.jet1ET = jet1ET;
-            this.leptonpT = leptonpT;
-            this.hT = hT;
-            this.mET = mET;
-            this.qEta = qEta;
-            this.cosTheta = cosTheta;
-        }
     }
 
 }

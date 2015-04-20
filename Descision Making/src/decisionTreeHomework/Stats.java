@@ -69,9 +69,10 @@ public class Stats {
         return sortedMap;
     }
 
-    public static double getPercentageMatchingTargetValue(ArrayList<Double> valuesDouble, Integer targetValue) {
+    public static double getPercentageMatchingTargetValue(ArrayList<Double> valuesDouble, double targetValueDouble) {
         
-        ArrayList<Integer> values = scaleUp100x(valuesDouble);
+        Integer targetValue = scaleUp1000x(targetValueDouble);
+        ArrayList<Integer> values = scaleUp1000x(valuesDouble);
         
         Map<Integer, Integer> map = generateDistributionMap(values);
 
@@ -83,6 +84,7 @@ public class Stats {
     }
 
     private static double getPercentageMatchingTargetValue(Map<Integer, Integer> map, Integer targetValue, double size) {
+        
         if (map.containsKey(targetValue)) {
             return map.get(targetValue) / size;
         }
@@ -90,11 +92,12 @@ public class Stats {
         return 0;
     }
 
-    public static double[] getPercentRange(ArrayList<Double> valuesDouble, Integer percentage, Integer targetValue, Integer maxBound) {
+    public static double[] getPercentRange(ArrayList<Double> valuesDouble, Integer percentage, double targetValueDouble, Integer maxBound) {
         double[] zrange = new double[2];
         double targetPercentage = percentage / 200.0;
 
-        ArrayList<Integer> values = scaleUp100x(valuesDouble);
+        Integer targetValue = scaleUp1000x(targetValueDouble);
+        ArrayList<Integer> values = scaleUp1000x(valuesDouble);
         
         Map<Integer, Integer> distribution = generateDistributionMap(values);
         distribution = sortMap(distribution, maxBound);
@@ -136,13 +139,17 @@ public class Stats {
         return zrange;
     }
 
-    private static ArrayList<Integer> scaleUp100x(ArrayList<Double> nums){
+    private static ArrayList<Integer> scaleUp1000x(ArrayList<Double> nums){
         ArrayList<Integer> intNums = new ArrayList<>();
         for(double d: nums){
-            d *= 100;
+            d *= 1000;
             intNums.add((int)Math.round(d));
         }
         return intNums;
+    }
+    
+    private static int scaleUp1000x(double num){
+        return (int)Math.round(num*1000);
     }
     
     public static double calculateUncertainty(double lower, double upper, double size) {
