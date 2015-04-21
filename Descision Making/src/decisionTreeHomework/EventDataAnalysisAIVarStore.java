@@ -237,36 +237,36 @@ public class EventDataAnalysisAIVarStore {
         
     }
     
-    public double[] getProbableRange_mlnub(){
-        return Stats.getPercentRange(mlnub, 68, Stats.getAverage(mlnub), (int)Math.ceil(Stats.getMaxValueInArray(mlnub)));
+    public double[] getProbableRange_mlnub(int percent){
+        return Stats.getPercentRange(mlnub, percent, Stats.getAverage(mlnub), (int)Math.ceil(Stats.getMaxValueInArray(mlnub)));
     }
     
-    public double[] getProbableRange_transverseMass(){
-        return Stats.getPercentRange(transverseMass, 68, Stats.getAverage(transverseMass), (int)Math.ceil(Stats.getMaxValueInArray(transverseMass)));
+    public double[] getProbableRange_transverseMass(int percent){
+        return Stats.getPercentRange(transverseMass, percent, Stats.getAverage(transverseMass), (int)Math.ceil(Stats.getMaxValueInArray(transverseMass)));
     }
     
-    public double[] getProbableRange_jetlET(){
-        return Stats.getPercentRange(jet1ET, 68, Stats.getAverage(jet1ET), (int)Math.ceil(Stats.getMaxValueInArray(jet1ET)));
+    public double[] getProbableRange_jetlET(int percent){
+        return Stats.getPercentRange(jet1ET, percent, Stats.getAverage(jet1ET), (int)Math.ceil(Stats.getMaxValueInArray(jet1ET)));
     }
     
-    public double[] getProbableRange_leptonpT(){
-        return Stats.getPercentRange(leptonpT, 68, Stats.getAverage(leptonpT), (int)Math.ceil(Stats.getMaxValueInArray(leptonpT)));
+    public double[] getProbableRange_leptonpT(int percent){
+        return Stats.getPercentRange(leptonpT, percent, Stats.getAverage(leptonpT), (int)Math.ceil(Stats.getMaxValueInArray(leptonpT)));
     }
     
-    public double[] getProbableRange_hT(){
-        return Stats.getPercentRange(hT, 68, Stats.getAverage(hT), (int)Math.ceil(Stats.getMaxValueInArray(hT)));
+    public double[] getProbableRange_hT(int percent){
+        return Stats.getPercentRange(hT, percent, Stats.getAverage(hT), (int)Math.ceil(Stats.getMaxValueInArray(hT)));
     }
     
-    public double[] getProbableRange_mET(){
-        return Stats.getPercentRange(mET, 68, Stats.getAverage(mET), (int)Math.ceil(Stats.getMaxValueInArray(mET)));
+    public double[] getProbableRange_mET(int percent){
+        return Stats.getPercentRange(mET, percent, Stats.getAverage(mET), (int)Math.ceil(Stats.getMaxValueInArray(mET)));
     }
     
-    public double[] getProbableRange_qEta(){
-        return Stats.getPercentRange(qEta, 68, Stats.getAverage(qEta), (int)Math.ceil(Stats.getMaxValueInArray(qEta)));
+    public double[] getProbableRange_qEta(int percent){
+        return Stats.getPercentRange(qEta, percent, Stats.getAverage(qEta), (int)Math.ceil(Stats.getMaxValueInArray(qEta)));
     }
     
-    public double[] getProbableRange_cosTheta(){
-        return Stats.getPercentRange(cosTheta, 68, Stats.getAverage(cosTheta), (int)Math.ceil(Stats.getMaxValueInArray(cosTheta)));
+    public double[] getProbableRange_cosTheta(int percent){
+        return Stats.getPercentRange(cosTheta, percent, Stats.getAverage(cosTheta), (int)Math.ceil(Stats.getMaxValueInArray(cosTheta)));
     }
     
     public double getOccurancePercentage_mlnub(double value){

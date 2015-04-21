@@ -26,21 +26,19 @@ public class Boot implements Runnable{
     public void run() {
         
         IOHelper<Data> in = new IOHelper<>();
-        Data d = in.read("data/background.dat");
+        Data background = in.read("data/background.dat");
+        Data background2 = in.read("data/backgroundBig.dat");
+        Data signal = in.read("data/signal.dat");
+        Data signal2 = in.read("data/signalBig.dat");
+        Data unknown = in.read("data/decisionTreeData.dat");
         
-        int i = 0;
+        EventDataAnalysisAI ai = new EventDataAnalysisAI();
+        ai.train(background, "background");
+//        ai.train(background2, "background");
+        ai.train(signal, "signal");
+//        ai.train(signal2, "signal");
         
-        for(Object e: d.getEvents()){
-            for(double da: ((Homework9Event)e).getVars()){
-                System.out.println(da);
-            }
-            System.out.println("");
-            i++;
-            if(i > 10){
-                break;
-            }
-        }
-        
+        ai.testData(signal);
     }
     
     

@@ -71,8 +71,8 @@ public class Stats {
 
     public static double getPercentageMatchingTargetValue(ArrayList<Double> valuesDouble, double targetValueDouble) {
         
-        Integer targetValue = scaleUp1000x(targetValueDouble);
-        ArrayList<Integer> values = scaleUp1000x(valuesDouble);
+        Integer targetValue = scaleUp100x(targetValueDouble);
+        ArrayList<Integer> values = scaleUp100x(valuesDouble);
         
         Map<Integer, Integer> map = generateDistributionMap(values);
 
@@ -92,16 +92,18 @@ public class Stats {
         return 0;
     }
 
-    public static double[] getPercentRange(ArrayList<Double> valuesDouble, Integer percentage, double targetValueDouble, Integer maxBound) {
+    public static double[] getPercentRange(ArrayList<Double> valuesDouble, Integer percentage, double targetValueDouble, int maxBound) {
         double[] zrange = new double[2];
         double targetPercentage = percentage / 200.0;
+        maxBound = scaleUp100x(maxBound);
 
-        Integer targetValue = scaleUp1000x(targetValueDouble);
-        ArrayList<Integer> values = scaleUp1000x(valuesDouble);
+        Integer targetValue = scaleUp100x(targetValueDouble);
+        ArrayList<Integer> values = scaleUp100x(valuesDouble);
+        
         
         Map<Integer, Integer> distribution = generateDistributionMap(values);
         distribution = sortMap(distribution, maxBound);
-
+        
         double percentageLeft = 0, percentageRight = 0;
         percentageLeft += getPercentageMatchingTargetValue(distribution, targetValue, values.size()) / 2.0;
         percentageRight += getPercentageMatchingTargetValue(distribution, targetValue, values.size()) / 2.0;
@@ -133,23 +135,27 @@ public class Stats {
             }
         }
 
-        zrange[0] = leftValue;
-        zrange[1] = rightValue;
+        zrange[0] = scaleDown100x(leftValue);
+        zrange[1] = scaleDown100x(rightValue);
 
         return zrange;
     }
 
-    private static ArrayList<Integer> scaleUp1000x(ArrayList<Double> nums){
+    private static ArrayList<Integer> scaleUp100x(ArrayList<Double> nums){
         ArrayList<Integer> intNums = new ArrayList<>();
         for(double d: nums){
-            d *= 1000;
+            d *= 100;
             intNums.add((int)Math.round(d));
         }
         return intNums;
     }
     
-    private static int scaleUp1000x(double num){
-        return (int)Math.round(num*1000);
+    private static double scaleDown100x(double num){
+        return num / 100d;
+    }
+    
+    private static int scaleUp100x(double num){
+        return (int)Math.round(num*100);
     }
     
     public static double calculateUncertainty(double lower, double upper, double size) {
